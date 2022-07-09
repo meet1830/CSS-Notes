@@ -1,0 +1,109 @@
+/* difference between flex and grid: grid was made to work with multiple rows and columns, 2d whereas flex is used to work with 1d with only one row or column, use flexbox containers inside grid items to make the website to work at its best */
+
+/* default code start */
+body {
+  background-color: gray;
+}
+.grid-container {
+/*   background-color: #fff; */
+  margin: 20px;
+}
+.grid-item {
+  font-weight: bold;
+  min-height: 80px;
+  padding: 20px;
+  background-color: skyblue;
+  border: 2px solid #fff;
+  font-size: 1.5rem;
+}
+/* default code end */
+
+
+.grid-container {
+  display: grid;
+/*   will notice no change */
+  
+  grid-template-columns: 200px 100px;
+/*   will have two columns and third item will in the next row below in first column */
+  grid-template-columns: 2fr 1fr;
+/*   will work same as flex-grow with values as 2 and 1 */
+  grid-template-columns: repeat(4, 100px);
+/*   4 columns of 100px each all other left is free space */
+  
+/*   grid-template-rows: 200px; */
+  
+/*   grid-auto-rows: 100px; */
+/*   if dont know number of rows and want to define length -> will only override the rows not defined by template rows -> first row height is defined, hence auto will assign height only to second row */
+  
+  grid-template-columns: repeat(1, 200px 250px);
+  
+/*   added content of lorem50 and lorem20 in first grid item and second grid item in html */
+  grid-auto-rows: minmax(150px, auto);
+/*   if no content in the box then also the height of grid item will be at least 150px */
+  
+  grid-row-gap: 20px;
+  grid-column-gap: 10px;
+  grid-gap: 20px;
+/*   values of gap same for both row and column */
+  
+/*   only one other way to lay out cols and rows, it allows to create strings for diff areas to describe layout */
+  grid-template-areas: 
+    "header header"
+    "sidebar content"
+    "sidebar content";
+/*   now see grid-area prop of item 1,2 and 3 */
+}
+
+#item1 {
+/*   grid-area: header; */
+/*   grid item 1 will take up whole first row as their are only two columns and here both are defined with header */
+  
+/*   numbers based on grid lines */
+  grid-column-start: 1;
+  grid-column-end: 3;
+  
+/*   -1 to span to end of last column */
+  grid-column-start: 1;
+  grid-column-end: -1;
+  
+/*   shorthand */
+  grid-column: 1 / -1;
+  
+/*   if want this item to span to two columns, span 1 is default */
+  grid-column: span 2;
+}
+
+#item2 {
+/*   grid-area: sidebar; */
+/*   takes up two rows and first col as defined in the string template */
+  
+  grid-row-start: 2;
+  grid-row-end: 4;
+}
+
+#item3 {
+/*   grid-area: content; */
+  
+  grid-row: span 2;
+}
+
+.grid-container {
+/*   align items and justify items for grid items inside the container and align content and justify content for the container inside its parent container */
+  justify-content: start;
+  align-content: end;
+/*   not flex-start and flex-end */
+  
+  justify-content: space-around;
+  align-content: stretch;
+  
+/*   applying to the content in all the grid items at once */
+/*   by default both are stretch hence the size of items shrink when we apply these */
+/*   justify-items: center;
+  align-items: center; */
+}
+
+#item1 {
+/*   applying to the content only inside this item justify items and align items will be overriden by these properties */
+  justify-self: center;
+  align-self: start;
+}

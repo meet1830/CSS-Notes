@@ -1,0 +1,29 @@
+body {
+    font-size: 22px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+
+    /* adding bg color can use only bg as it allows to add more props to it */
+    background: papayawhip;
+    
+    /* font color */
+    color: darkblue;
+
+    color: rgb(255, 0, 0);
+    /* 000 for black */
+}
+
+p {
+    /* with transperancy/opacity called alpha */
+    color: rgba(0, 255, 0, 0.5);
+
+    /* using hexadecimal */
+    color: #0000FF;
+    /* same as 00FF00, cannot do for every color they need pairs for example 808080 cannot be converted in this form */
+    color: #0F0; 
+
+    color: #333;
+    /* same as 333333 */
+
+    /* using color palette for vscode -> click in color box generated when adding color, can select color, transperancy, and also has mode hsl -> hue, saturation, lighting, opacity (hsl, hsla), when on hsl mode color on right side are actually hues of the selected color, hence all hues of the color can be selected */
+}

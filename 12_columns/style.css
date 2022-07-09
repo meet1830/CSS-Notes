@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+}
+
+.columns {
+  text-align: justify;
+
+  /* the first four para becomes inline-block and gets divided as per number of columns, also when resize window the columns number does remain 4 but each para does not start from new column it adapts to the screen size becomes cluttered */
+  column-count: 4;
+
+  column-width: 250px;
+  /* adding min column width will increase responsiveness on different type of screens as if all 4 columns cannot fit then it will reduce them to three and then 2 and then 1 */
+
+  /* shorthand */
+  columns: 4 250px;
+  
+  /* vertical line between columns */
+  column-rule: 2px solid #333;
+
+  /* if want to give extra spacing between columns to make them look better */
+  column-gap: 3rem;
+}
+
+/* no css reset applied hence each para contains margin on all sides. hence the first para starts a little below from the top */
+.columns p {
+  margin-top: 0;
+}
+
+.columns h2 {
+  margin-top: 0;
+  background-color: #333; 
+  padding: 1rem;
+  color: whitesmoke;
+
+  /* a strip of colour of h2 bg can appear on the first column and the rest on the second, at a particular screen size in inspect elements, for that */
+  break-inside: avoid;
+
+  /* if want to force more than 1 column in the webpage then use this -> will shrink down the webpage similar to desktop mode to fit more than one column when size of webpage is reduced enough */
+  /* break-before: column; */
+}
+
+.columns .quote {
+  font-size: 3rem;
+  text-align: center;
+  color: #333;
+
+  /* used when content in a container is divided into columns and we dont want the selector element to be divided, for example a section with a h2 and multiple para, where h2 is spanning element, similar in magazines */
+  column-span: all;
+
+  /* here margin on top is set to 0 for paragraphs hence will not look good, but if written here margin top then will make no change as selector .columns p has more specificity than just quote(only a class), hence change to .columns .quote and this will double the specificity and will be more than .columns p (class + internal element < class + class) */
+  margin-top: 2rem;
+}
+
+/* if page gets resized the - the dude gets separated and does not look good therefore. the dude will now not be broken and will stay together */
+.nowrap {
+  white-space: nowrap;
+  /* display: inline-block; */
+}

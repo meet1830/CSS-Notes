@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* typography is the way that text is arranged and presented */
+
+body {
+  /* arranges whole webpage in the middle */
+  padding: 25vh;
+  /* font-size: 2rem; */
+  /* props like these are inherited but notice that the input and button type does not inherit the enlargement of size hence have to specify inherit on them*/
+
+  /* linked from google fonts */
+  font-family: 'Roboto', sans-serif;
+}
+
+input, button {
+  font: inherit;
+}
+
+/* text and font different */
+p {
+  text-decoration: underline;
+  text-decoration: overline;
+  text-decoration: line-through;
+  /* none is applied by default, links contains underline but if applied none then will get removed */
+  text-decoration: none;
+
+  /* capitalizes first letter of each word */
+  text-transform: capitalize;
+  text-transform: uppercase;
+  text-transform: lowercase;
+
+  text-align: left;
+  text-align: right;
+  text-align: justify;
+
+  text-indent: 2em;
+
+  /* height between two lines in text, default value - 1.2, also normal is a value for many properties */
+  line-height: 1.2;
+  line-height: 1.5;
+
+  letter-spacing: 0.2em;
+
+  word-spacing: 1em;
+
+  /* boldness normal around 400 */
+  font-weight: 600;
+
+  font-style: italic;
+  /* more italic then italic prop */
+  font-style: oblique;
+
+  /* default provided by browser */
+  font-family: serif;
+  font-family: sans-serif;
+  font-family: monospace;
+  font-family: cursive;
+  font-family: fantasy;
+
+  /* website will be opened in different os hence if courier new not found then will look for courier and else for monospace */
+  font-family: 'Courier New', Courier, monospace;
+  font-family: Arial, Helvetica, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Times New Roman', Times, serif;
+
+  /* how to link google fonts through link and import (options available in google fonts) 
+
+  -> through link option
+  1. copy all links
+  2. in html file -> above linking style sheet, paste
+  3. copy code snippet from option css rules to specify families and paste it in css file in the selector where we want to apply
+
+  -> through import option
+  1. copy the code snippet, if pasting in html file then copy with style tags and if pasting in css file then copy without style tags
+  2. paste it in css file at the top 
+  3. copy and paste code from css rules to specify families 
+  */
+}

@@ -1,0 +1,40 @@
+/* check mdn page for different units */
+/* will mostly use px */
+/* browser settings gives option for text size(not zoom the page, option in settings-appearence) and if defined size in css then will override it and cannot be changed by browser hence dont use absolute font size and take option away from users */
+/* in borders,etc can use absolute values, does not matter screen size and user experience */
+
+
+h1 {
+  border: dashed 2px red;
+  width: 50%;
+}
+
+header {
+  width: 50%;
+}
+/* here h1 will take only half the width of the page, and h1 is in the header element which itself takes half the width hence available width to h1 is half of webpage hence reduces again to 25% */
+
+p {
+  font-size: 1rem;
+  /* by default it is 1 rem, font is set by browser because of rem, does not collide with settings, mostly 1 rem is 16px */
+}
+
+main {
+  font-size: 2rem;
+  /* will not be overided as size is defined by browser and its not relative to parent */
+  /* if want to inherit then use em unit where it first inherits and then applies on top of it. hence it already 2rem and 2em on top of it will multiply, hence always use just rem */
+}
+
+h1 {
+  font-size: 3rem;
+  padding: 0.5em;
+  /* can use em here as we want it to build on top of font size of the element */
+}
+
+/* ch is also used where width and size is defined based on the font family's 0. used in magazines and newspapers where only number of characters are to be written per line of the col defined */
+
+body {
+  /* border: solid black 1px; */
+  min-height: 100vh;
+  /* viewport height - height of the device */
+}

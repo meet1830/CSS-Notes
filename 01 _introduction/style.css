@@ -1,0 +1,6 @@
+p {
+  font-size: 40pt;
+  color: blue;
+  /* colour(british english) will not work */
+  /* p is called selector, color is called property, blue is called value, and color: blue; is called declaration */
+}

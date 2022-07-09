@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+body {
+  padding: 5% 10%;
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+ol {
+  /* by default numbers (1, 2, 3) prop-name -> decimal, to assign style as numbers use prop decimal */
+
+  /* a, b, c */
+  list-style-type: lower-alpha;
+
+  /* 01, 02 */
+  list-style-type: decimal-leading-zero;
+
+  /* default for unordered list */
+  list-style-type: disc;
+
+  list-style-type: upper-roman;
+
+  /* if dont want any type of bullets then none as value, but still indentation will remain, then set padding as 0 */
+  /* list-style-type: none;
+  padding: 0; */
+
+  color: blueviolet;
+  list-style-type: lower-alpha;
+}
+
+ul {
+  text-align: center;
+  /* if only text align center then bullets will remain on the left side for this the following. some browsers has already set this to inside whereas some has value outside hence the case */
+  list-style-position: inside;
+
+  /* this will also change the color of bullets */
+  color: blue;
+
+  /* if want to use image as a bullet */
+  list-style-image: url(../08_lesson_list_styles/images/checkmark.png);
+
+  /* shorthand -> provide all of these in one command */
+  list-style: square url(../08_lesson_list_styles/images/checkmark.png) blue;
+}
+
+ul li:nth-child(2) {
+  /* applies 2nd child */
+  color: red;
+
+  /* if passed odd or even then apples to all odd or all even list elements */
+}
+
+/* pseudo elements marker */
+ul ::marker {
+  /* makes all the markers(bullets) of the webpage  */
+  color: black;
+
+  font-family: fantasy;
+  font-size: 1em;
+
+  content: "Only $5 >> ";
+}

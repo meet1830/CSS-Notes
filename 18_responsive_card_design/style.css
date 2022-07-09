@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+/* || RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* img reset */
+img {
+  display: block;
+  /* remove space underneath images cause they are inline elements */
+  /* width and height no need to add but added in html hence need to add here or else will stay at original size */
+  max-width: 100%;
+  /* to not overflow its container */
+  height: auto;
+}
+
+/* utility classes */
+.nowrap {
+  /* to not let dev rel break in half */
+  white-space: nowrap;
+}
+
+/* || GENERAL STYLES */
+
+html { scroll-behavior: smooth; }
+
+body {
+  font: 1.5rem "Nunito", sans-serif;
+  min-height: 100vh;
+
+  background-color: #475569;
+  background-image: radial-gradient(whitesmoke, #475569);
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+footer {
+  position: sticky;
+  background-color: #1e293b;
+  color: whitesmoke;
+  
+  text-align: center;
+}
+
+header {
+  top: 0;
+}
+
+nav {
+  background-color: #fff;
+  padding: 0.5rem;
+  border-bottom: 2px solid #000;
+
+  /* names are distributed evenly in navbar */
+  font-weight: bolder;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+nav a, nav a:visited {
+  color: #000;
+}
+
+nav a:hover, nav a:focus {
+  color: hsla(0, 0%, 20%, 0.6);
+}
+
+main {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+footer {
+  bottom: 0;
+}
+
+/* profile card */
+
+.card {
+  /* when tap on navbar names, they link to the profile article tag of the names, but here header and navbar hence need to push down or the photo seems scrolled down a little bit due to header and nav */
+  scroll-margin-top: 8rem;
+
+  /* this is min but also takes a max that the photo will not go bigger than 350px */
+  width: min(100%, 350px);
+
+  background-color: #cbd5e1;
+  border: 2px solid #000;
+  border-radius: 15px;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* name does not get centered because it is inside the fig and hence photo and name is one flex element */
+}
+
+.card figure {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+/* adding border and making image a circle */
+.card img {
+  border: 5px double #333;
+  border-radius: 50%;
+}
+
+.card figcaption {
+  font-weight: bolder;
+  font-size: 2rem;
+  margin: 1rem;
+  text-align: center;
+}
+
+/* || SMALL */
+@media screen and (min-width: 576px) {
+  main {
+    /* in main did not have justify content hence will override or get added now */
+    justify-content: center;
+
+    flex-flow: row wrap;
+    /* we want them to wrap if they take more space than they have -> when window size decreases */
+
+    padding: 1rem;
+  }
+
+  .card {
+    /* max will go up to 400px */
+    width: min(100%, 400px);
+  }
+
+  .card:last-child {
+    /* make last card first */
+    order: -1;
+  }
+}
+
+/* || MEDIUM */
+@media screen and (min-width: 768px) {
+  nav {
+    /* navbar will disappear if size goes beyond this */
+    display: none;
+  }
+
+  .card {
+    width: min(100%, 325px);
+    /* make them smaller so that they all fit side by side on the ipad screen size */
+  }
+
+  .card figure {
+    /* name appears on top of figure now */
+    flex-flow: column-reverse;
+  }
+
+  .card p {
+    margin-top: 1rem;
+  }
+}
+
+/* || LARGE */
+@media screen and (min-width: 992px) {
+  .card {
+    width: min(100%, 400px);
+    /* again making it big since in medium made it smaller so here big cause medium was breakpoint in between */
+  }
+
+  .card:nth-child(2) {
+    order: -1;
+  }
+}
+
+/* || XL  */
+@media screen and (min-width: 1200px) {
+  .card {
+    /* using function inside other function, calc function lets us mix units together */
+    width: min(calc(33% - 1rem), 500px);
+    /* 500px -> that is the size of images, we dont want images to get larger than their original size and get blurred, percentage will let the images grow dynamically with the page size */
+  }
+}
+
+/* || MOBILE DEVICE LANDSCAPE  */
+@media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  nav {
+    display: none;
+  }
+
+  main {
+    flex-flow: row nowrap;
+    /* so we will have only one row */
+    justify-content: space-evenly;
+
+    /* to make all of them to same heights if in case the content would make them different heights */
+    align-items: stretch;
+  }
+
+  .card {
+    width: min(calc(33% - 0.25rem), 200px);
+  }
+
+  .card figcaption, .card p {
+    font-size: 1.25rem;
+  }
+}

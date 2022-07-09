@@ -1,0 +1,63 @@
+/* three diff types of selectors */
+
+/* 1. element selector */
+body {
+  /* only one element selector per page */
+  font-size: 22px;
+}
+
+p {
+  color: purple;
+}
+
+/* 2. class selectors */
+.gray {
+  /* para 2 and 3 has class named gray */
+  color: gray;
+}
+
+/* 3. id selectors */
+/* recommended to use class selectors mostly and if needed then element selectors but rarely an id selector */
+#second {
+  font-style: italic;
+}
+
+/* group selection */
+h1, h2 {
+  color: blue;
+}
+
+/* if second element exists inside first element */
+/* better if used class for it here .highlight class */
+p span {
+  text-transform: uppercase;
+  background-color: gold;
+}
+
+/* universal selector - applies to everything on the page, highest precedence after inline css */
+* {
+  font-family: monospace;
+}
+
+/* its cascading style sheets means works top to down if defined another p element selector and changed to other color then will override */
+/* class and ids (ids more than class) have more precedence and specificity hence will override element selectors */
+/* if have large css file and properties gets mismatched, then can inspect elements and click on that element will show the props applied to that element or class or id */
+/* inheritance -> all elements will inherit properties that are there in the parent class, like body element, and properties that can be inherited are font size, color, etc, now if apply a border to the body element then will not be inherited and there would not be a border around every element, also in universal selector each element selects each element and hence border will be around every element */
+
+button, input, textarea, select, fieldset, label {
+  font: inherit;
+}
+
+/* not all props are inheritable (form elements are generally not inheritable) like font size and if want it to inherit then use inherit */
+
+html {
+  font-size: 22px !important;
+  /* dont use this flag -> it overrides every property and makes the code messier, has only specific application */
+}
+/* can use html element which can be used many times unlike body, and body can contain props which are specific to the body */
+
+/* can use main element - semantic, can be used once per page, does not include header, footer (refer html file) hence can be used */
+main {
+
+}
+

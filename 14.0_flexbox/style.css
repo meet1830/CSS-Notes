@@ -1,0 +1,101 @@
+/* link to test every property in flexbox: https://codepen.io/enxaneta/full/adLPwv/ */
+
+/* default code start */
+.flex-container {
+  height: 500px;
+  border: solid black 0.15rem;
+}
+.flex-item {
+  width: 150px;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid black;
+  background-color: gray;
+}
+#item1 {
+  min-height: 50px;
+/*   height: 50px; */
+}
+#item2 {
+  min-height: 100px;
+/*   height: 100px; */
+}
+#item3 {
+  min-height: 200px;
+/*   height: 200px; */
+}
+/* default code end */
+
+
+
+.flex-container {
+  display: flex;
+/*   if wrote display flex with only defined min height, then each item will extend to the container height. two types of axis -> main axis and cross axis -> main axis horizontal for row which is set by default -> if flex direction is column then main axis will be vertical */
+  
+  
+  
+/*   justify-content will apply along main axis */
+  justify-content: flex-start; 
+  /* default value */
+  justify-content: flex-end;
+  justify-content: center;
+  justify-content: space-between;
+  justify-content: space-around;
+  justify-content: space-evenly;
+  
+/*   will apply along cross axis */
+  align-items: stretch; 
+/*   default value -> items will stretch from height to fill maximum space in parent container */
+  
+/*   align-items: flex-start;  */
+/*   will keep original size of items */
+  
+/*   align-items: center; */
+  
+/*   align-content: center;  */
+/*   only for use in multiline flexbox containers -> will have no effect on single line */
+/*   using align items or/and align content other than default values will override the stretching of items and they will arrange in their original size */
+  
+  flex-wrap: wrap; 
+/*   items will wrap around with size of webpage instead of shrinking their size */
+}
+
+#item1 {
+  flex-shrink: 0;
+/*   means does not want this item to shrink at all when window size decrease */
+  
+/*   if want to change order of items without actually changing the html, then have to define order in all items */
+  order: 3;
+}
+
+#item2 {
+  flex-grow: 1;
+/*   it takes all the extra space of the container in width */
+  
+  flex-basis: 0px;
+/*   see below basis first */
+  
+  align-self: center;
+/*   instead of stretching the full container, we want this item to align center with original size of item. this will not override the container prop of any value if other than stretch is given in align items in parent -> same as not defined align items in parent */
+  
+  order: 1;
+}
+
+#item3 {
+/*   flex-grow: 1; */
+/*   can use grow on more than one items and will notice that both will grow proportionally to each other with same size as their grow value is same */
+  
+  flex-grow: 2;
+/*   now this items is about twice the size of item2 with grow 1. not exactly twice because grow distributes the leftover space to each item according to grow value. so with 2 value will gain twice space available. also as width of item is defined it takes the width and then adds the amount of space to the item.  */
+  
+  flex-basis: 0px;
+/*   if want to override that then use basis. if 0px will assume to grow from 0. have to do in both of for other item will add space above it original width */
+  
+  align-self: flex-end;
+  
+  order: 2;
+  
+/*   shorthand for flex grow and shrink, can add any one or two values also and it will get it */
+  flex: 1 0 0px;
+/*     flex-grow, flex-shrink, flex-basis */
+}

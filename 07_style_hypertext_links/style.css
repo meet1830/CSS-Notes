@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    padding: 10%;
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: blue;
+}
+
+/* pseudo classes */
+/* if pseudo classes will be above a tag then also it will work because pseudo class have more specificity than anchor element, but visited hover acive all have same specificity and hence can override each other, if put hover on visited, then for links that are visited hover will not work, hence all should be in this order */
+
+a:visited {
+    color: purple;
+}
+
+a:hover, a:focus {
+    /* if focus is applied then can tap and select each link and helpful to screen readers where tap and navigate */
+    color: rgba(31, 143, 255, 0.7);;
+
+    opacity: 0.7;
+}
+
+a:active {
+    color: red;
+}
+
+/* generally webpages have links color same as text color and does not have visited (no color change for visited links) */
+/* for visited can use vs code color selector and can selected just a lighter shade from bar beside -> good color theme, another way is to use opacity, where if hovered then opacity will be a bit less(0.7 or 0.9) and it goes with the theme, can also use rgba alpha there */

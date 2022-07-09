@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+/* pseudo selectors -> difference between pseudo class and pseudo elements 
+pseudo class is a selector that selects the elements in a specific state focus, hover, visited, active. pseudo elements act like we have added them as a new element in html doc. also they use 2 colons */
+
+/* || RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* || UTILITY CLASSES */
+.nowrap {
+  white-space: nowrap;
+}
+
+/* || GENERAL STYLES */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font: 1.5rem "Nunito", sans-serif;
+  min-height: 100vh;
+  background-color: #475569;
+  background-image: radial-gradient(whitesmoke, #475569);
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+footer {
+  position: sticky;
+  background-color: #1e293b;
+  color: whitesmoke;
+  text-align: center;
+  z-index: 1;
+}
+
+header {
+  top: 0;
+}
+
+nav {
+  background-color: #fff;
+  padding: 0.5rem;
+  border-bottom: 2px solid #000;
+  font-weight: bolder;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* nav a and nav a:link is same */
+/* nav a:link,
+nav a:visited  */
+/* "any-link" pseudo class selects both link and visited pseudo class */
+nav a:any-link
+{
+  color: #000;
+}
+
+/* "is" pseudo class */
+/* nav a:hover,
+nav a:focus  */
+nav :is(a:hover, a:focus)
+{
+  color: hsla(0, 0%, 20%, 0.6);
+}
+/* is is an example of dry - dont repeat yourself, made a code a bit drier */
+
+/* looking at other pseudo classes */
+nav a:active {
+  /* active means when it is selected by mouse button */
+  color: red;
+}
+
+/* is(selector, selector, class) or any other combination -> hover above it and it shows specificity of that combo, now use where(any combination), the specificity of it will always be zero, hence can easily be overidden */
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+footer {
+  bottom: 0;
+}
+
+/* || PROFILE CARD */
+.card {
+  scroll-margin-top: 8rem;
+  width: min(100%, 350px);
+  background-color: #cbd5e1;
+  border: 2px solid #000;
+  border-radius: 15px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* if select the cards with navbar, whichever is selected, will have purple border, so this defines props for the current target */
+.card:target {
+  border: 2px solid rebeccapurple;
+}
+
+.card figure {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.card img {
+  border: 5px double #333;
+  border-radius: 50%;
+}
+
+/* making selection of card based on attributes */
+.card img[alt] {
+  /* border: 10px green solid; */
+}
+/* all images has an alt attribute hence all will have the effect */
+
+.card img:not([alt]) {
+  border:10px red solid
+  /* images which does not have alt attribute -> e are able to check which image in our webpage here does not have alt */
+}
+
+/* although says nth child of card but selecting card itself */
+.card:nth-child(2) {
+  background-color: papayawhip;
+  /* here although we changed the order of cards in css but it will select based on html file */
+  /* other values odd, even */
+}
+
+.card figcaption {
+  font-weight: bolder;
+  font-size: 2rem;
+  margin: 1rem;
+  text-align: center;
+}
+
+/* pseudo elements */
+
+.card figcaption::first-letter {
+  /* selects first letter of each card, it will apply to before pseudo element if it exists(see below) */
+  font-size: 3rem;
+  /* it makes the first letter of name bigger in this case */
+}
+/* also other value first-line */
+
+.card figcaption::after {
+  /* content: ' hello'; */
+  /* it will be added to the content in the end in all cards and it cannot be selected it just gets added at the back */
+
+  display: block;
+  /* content will be in its own line */
+  font-size: 3em;
+  /* content can be styled however as we want with any properties */
+
+  /* can also do before as pseudo element */
+}
+
+/* parent having position relative see selector after this */
+.card p {
+  position: relative;
+}
+
+.card p::before {
+  content: open-quote;
+
+  font-size: 3em;
+  position: absolute;
+  /* now absolute always needs its parent to have position relative */
+  top: -0.25em;
+  left: -0.5em;
+}
+
+.card p::after {
+  content: close-quote;
+
+  font-size: 3em;
+  position: absolute;
+  top: -0.25em;
+  right: -0.5em;
+
+  /* remove quotes tag from html to remove single quote */
+
+  /* add zindex 1 to header and footer to keep them above the added content */
+}
+
+/* || SMALL */
+@media screen and (min-width: 576px) {
+  main {
+    justify-content: center;
+    flex-flow: row wrap;
+    padding: 1rem;
+  }
+  .card {
+    width: min(100%, 400px);
+  }
+  .card:last-child {
+    order: -1;
+  }
+}
+
+/* || MEDIUM */
+@media screen and (min-width: 768px) {
+  nav {
+    display: none;
+  }
+  .card {
+    width: min(100%, 325px);
+  }
+  .card figure {
+    flex-flow: column-reverse;
+  }
+  .card p {
+    margin-top: 1rem;
+  }
+}
+
+/* || LARGE */
+@media screen and (min-width: 992px) {
+  .card {
+    width: min(100%, 400px);
+  }
+  .card:nth-child(2) {
+    order: -1;
+  }
+}
+
+/* || XL  */
+@media screen and (min-width: 1200px) {
+  .card {
+    width: min(calc(33% - 1rem), 500px);
+  }
+}
+
+/* || MOBILE DEVICE LANDSCAPE  */
+@media screen and (max-height: 425px) and (min-aspect-ratio: 7/4) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  nav {
+    display: none;
+  }
+
+  main {
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+  }
+
+  .card {
+    width: min(calc(33% - 0.25rem), 200px);
+  }
+
+  .card figcaption,
+  .card p {
+    font-size: 1.25rem;
+  }
+}

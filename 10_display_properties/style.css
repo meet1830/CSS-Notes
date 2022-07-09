@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+}
+
+p {
+  background-color: lightgray;
+  /* bg color applies to 100% of width because this is an inline element and also there is a default margin between them */
+  /* 100% of width means not always 100% of view port because if width is applied to parent element like main in this case then will not extend to whole viewport */
+}
+
+.opposite {
+  background-color: #333;
+  color:whitesmoke;
+
+  margin-top: 100px;
+  height: 200px;
+  /* both of these will have no effect */
+
+  padding: 4rem;
+  /* if increase this then will overlap the para above */
+
+  /* both of this due to span being inline element */
+
+  /* if only block then will take whole line space, inline block then will not overlap anything and also take space that it needs */
+  display: inline-block;
+
+  /* block, inline and block-inline */
+}
+
+/* ul and li are block level elements */
+ul {
+  list-style-type: none;
+  padding: 0.5rem;
+  text-align: right;
+  background-color: black;
+  margin: 0;
+}
+
+li {
+  /* all li comes in one line */
+  display: inline-block;
+  /* applying margin to just left and right side */
+  margin-inline: 0.5rem;
+}
+
+li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+li a:hover, la :focus {
+  text-decoration: underline;
+}
+
+/* can use display: none; in any selector and that will remove it from document */

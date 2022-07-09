@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+/* applying what is learnt till now */
+
+/* apply css reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0.5rem;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+nav {
+  border: 2px solid #333;
+  border-radius: 2rem;
+  margin: 0 auto 1rem;
+  max-width: 600px;
+  font-size: 2rem;
+  line-height: 5rem;
+}
+
+h2 {
+  padding: 1rem;
+  background: gold;
+  /* applying border radius as bg is block rectangle and is above the border radius given to nav */
+  border-radius: 2rem 2rem 0 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  border-top: 2px solid #333;
+}
+
+/* not directly a because there is also a link of amazing foods which we dont want to style here */
+li a, li a:visited {
+  text-decoration: none;
+  color: #333;
+}
+
+li a:hover, li a:visited {
+  background: #333;
+  color: whitesmoke;
+  /* can also change pointer if want */
+}
+
+li a {
+  /* when set hover, visited bg color, then the bg will apply to only anchor or where there is text because anchor is inline element and need to make it block so that the whole div's bg is changed */
+  display: block;
+  /* and now when the it is changed to block, to go to link do not have to click only to text but can click on the whole div */
+}
+
+/* after applying bg to block anchor, will notice that the bottom most li will have squared edges and not rounded as per the border radius */
+li:last-child a{
+  border-radius: 0 0 2rem 2rem;
+  /* top-left top-right bottom-right bottom-left */
+}

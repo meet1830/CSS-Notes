@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img { display: block; }
+
+/* two types of images -> foreground(on the page) and background */
+
+/* utility classes */
+
+.nowrap {
+  /* hello, symbol will be in one line and im jane will in other */
+  white-space: nowrap;
+}
+
+.offscreen {
+  position: absolute;
+  left: -10000px;
+}
+
+/* utility classes */
+
+body {
+  font-family: "Nunito", sans-serif;
+  min-height: 100vh;
+}
+
+.example {
+  margin-top: 1rem;
+  padding-left: 20px;
+  border: red solid 1px;
+
+  display: none;
+}
+
+.example img {
+  width: 25%;
+  /* here width is not 25% of img size but of container size, so it becomes responsive */
+  /* now if not apply height here then will take it as auto and this is true only if both are not defined in html but we have defined so we need to give height also */
+  height: auto;
+
+  /* now will notice that there will be a small space between the bottom of image and border because img is inline element and was thought of to go with para which is block (space will remain same only if there is just section and img with no para), to set it is a part of reset, set img to blok element at the top */
+}
+
+.profile-pic-figure {
+  width: 35%;
+}
+
+.profile-pic-figure img {
+  width: 100%;
+  /* 100% width of that 35% width of container */
+  height: auto;
+  min-width: 100px;
+  border: 5px double gray;
+
+  /* this will work only with square */
+  border-radius: 50%;
+}
+
+
+/* see after hero and h1 */
+.container {
+  /* create a filter or a mask by creating an extra layer on top -> a little advanced concept */
+
+  /* first move all hero properties */
+  background-color: rgb(251, 210, 156);
+  background-image: url(../16_responsive_image_properties/img/map-2176x1451.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* now put mask (background with opacity on hero */
+
+  /* now can also put bg position to choose to what part of the image we choose to display as color */
+  background-position: center center;
+  /* have values of x and y such as, top right, top left, bottom right, or any one value such as center */
+
+  display: none;
+}
+
+
+.hero {
+  border-bottom: 2px solid #000;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+
+  /* fallback color -> if bg image does not load then this color will be displayed */
+  /* background-color: rgb(251, 210, 156); */
+
+  /* background-image: url(../16_responsive_image_properties/img/pat2.png); */
+  /* the pattern is repeating in both x and y axis
+  background-image: no-repeat;
+  if set this command then image will not reapeat and will look like when inserted as an img src
+
+  we have other options for repeat as well such as no-repeat, repeat, repeat-x, repeat-y (just repeat in x or y axis)
+  */
+
+  /* background-image: url("../16_responsive_image_properties/img/map-2176x1451.png"); */
+  /* at this time only the top left part of image will be displayed as background */
+
+  /* background-size: cover; */
+  /* can now see much more of the image. it also resizes with the cover setting */
+
+  /* background-size: contain; */
+  /* it will fit the whole image in the container maintaining aspect ratios hence does not cover whole container or act as cover */
+
+  /* refer after container */
+  background-color: hsla(0, 0%, 100%, 0.404);
+  /* background-color: rgba(0, 0, 0, 0.35); */
+}
+
+.h1 {
+  font-size: 500%;
+  color: aliceblue;
+  text-shadow: 2px 2px 5px #000;
+  /* x axis, y axis, blur value and color */
+
+  /* a light background box below the text to make it stand out */
+  /* background-color: rgba(0, 0, 0, 0.4);
+  padding: 0.25rem;
+  border-radius: 10px; */
+}
+
+
+
+body {
+  background-color: aliceblue;
+
+  /* background-image: linear-gradient(to left, steelblue, purple, #fff); */
+  /* starts from right and goes towards left, other values to right, to bottom(default), to top */
+
+  /* can add more than one image */
+  background-image: 
+    url(../16_responsive_image_properties/img/bubbles.png),
+    linear-gradient(to left, steelblue, purple, #fff);
+
+  background-repeat: repeat-y, no-repeat;
+  background-position: right center;
+
+  /* bubbles look too big */
+  background-size: 20%, auto;
+
+  /* background prop shorthand, gets too confusing */
+  background: repeat-y right center url("../16_responsive_image_properties/img/bubbles.png"), no-repeat linear-gradient(to left, steeblue, white);
+}
+
+/* display image in text */
+.clip {
+  font-weight: 800;
+  font-size: 18rem;
+  text-align: center;
+  background-image: url("../16_responsive_image_properties/img/scenic-2200x1331.png");
+  background-size: 100%;
+  text-transform: uppercase;
+
+  -webkit-background-clip: text;
+  /* this will just work in chrome */
+  background-clip: text;
+  /* works in firefox, so we need to have both */
+  color: hsla(0, 0%, 0%, 0.2);
+  /* can make opacity 0 here to reduce blackness or set color as transperant */
+  color: transparent;
+}

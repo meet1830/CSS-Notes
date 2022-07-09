@@ -1,0 +1,179 @@
+/* DEFAULT CODE START */
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 1.5rem;
+  font-family: 'Nunito', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+div {
+  width: 200px;
+  height: 200px;
+  border: 1px solid #000;
+  display: grid;
+  place-content: center;
+}
+/* DEFAULT CODE END */
+
+
+/* TRANSFORM */
+div:first-child {
+  background-color: dodgerblue;
+
+  transform: translateX(-50%);
+  /* x will move it left or right and if we use percentage then it will be % of size of div, here width of div, pos move to right neg move to left */
+  
+  transform: rotateX(45deg);
+  /* imagine it being a sheet of paper, rotating from top to bottom, x axis being horizontal line, hence at 90deg it will disappear */
+  /* getting the original back */
+  /* transform: rotateX(0deg); */
+
+  transform: scaleX(120%);
+  /* will grow in x axis by 20% */
+
+  transform: skewX(10deg);
+  /* left and right sides will tilt */
+
+  transform: none;
+}
+
+
+div:nth-child(2) {
+  background-color: yellow;
+
+  transform: translateY(2rem);
+  /* will move it down by two rem, overlapping the third div */
+
+  /* similarly rotatey rotates it from left to right, y axis is vertical line */
+  transform: rotateY(45deg);
+  /* transform: rotateY(0deg); */
+
+  transform: scaleY(120%);
+
+  transform: skewY(-10deg);
+  /* top and bottom sides will tilt */
+
+  /* resetting default */
+  transform: none;
+}
+
+
+div:last-child {
+  background-color: limegreen;
+  
+  transform: translate(100%, 1rem);
+  /* can use x and y both together */
+  /* transform in x y and both any of them will override the prev instance and will perform transform from original */
+
+  /* rotating from z axis -> z axis is a line coming out perpendicular from sheet of paper, hence positive value rotates clockwise and neg value anticlockwise */
+  transform: rotateZ(45deg);
+  transform: rotate(45deg);
+  /* rotatez same as rotate */
+  /* transform rotate also in any direction x y or z will override prev rotate */
+
+  transform: scale(120%, 120%);
+  /* can put both values x and y */
+
+  transform: skew(-10deg, -10deg);
+  /* perform any type of transform rotate scale etc it will override the previous tranform applied of any type */
+
+  transform: none;
+}
+
+
+/* TRANSITIONS */
+div:hover {
+  background-color: midnightblue;
+  
+  transition-property: background-color, transform;
+  transition-duration: 2s, 3s;
+  transition-delay: 0.25s;
+  /* will change bg color of element to midnightblue in 2sec. will wait for 0.5sec the start the transition */
+  /* added transition and duration for rotate transform of below selector last child hover. delay remains same */
+
+  /* shorthand */
+  transition: all 2s 0.5s;
+  /* all transitions will last for 2sec and wil have delay of 0.5sec */
+
+  /* timing functions */
+  transition-timing-function: ease;
+  /* transition will go fast in beginning, then slow down in middle and then again fast in end */
+
+  transition-timing-function: linear;
+  /* does each thing in linear pace */
+
+  transition: all linear 2s 0.5s;
+  transition: all ease-in-out 2s 0.5s;
+  /* ease value is default */
+}
+
+div:last-child:hover {
+  transform: rotate(180deg);
+}
+
+
+
+/* ANIMATIONS */
+.animate {
+  /* name the animation */
+  animation-name: slide;
+  animation-duration: 5s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1s;
+  animation-iteration-count: 5;
+  /* repeat this animation 5 times */
+  
+  /* need to define keyframes for animation */
+
+  /* other properties */
+  animation-direction: alternate;
+  /* normal is default, alternate means here goes from left to right every time, now will go from left to right then right to left then again left to right */
+
+  animation-fill-mode: forwards;
+  /* default backwards. means here when animation is finished it will change color back to green. but here in forwards it will remain violet after animation iterations are finished. here alternate hence the animation finishes with green(alternate hence second time changing from violet to green) hence will not turn to violet */
+
+  /* shorthand */
+  animation: 5s ease-in-out 1s 2 normal forwards slide;
+  /* duration, timing func, delay, iterations, direction, fill mode, name */
+}
+@keyframes slide {
+  0% {
+    /* means at the beginning of the animation */
+    transform: translateX(0);
+  }
+  33% {
+    /* one third of the way */
+    transform: translateX(300px) rotate(180deg);
+  }
+  66% {
+    /* two thirds of the way */
+    transform: translateX(-300px) rotate(-180deg);
+  }
+  100% {
+    transform: translate(0);
+
+    background-color: rebeccapurple;
+    /* color starts to change from beginning */
+  }
+}

@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
+/* || RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* || VARIABLES */
+:root {
+  /* FONT */
+  --FF: "Nunito", sans-serif;
+  /* --FS: 1.5rem; */
+  
+  /* --FS: min(2.25rem, 3vh); */
+  /* min is a function and will always select the minimum of the two since vh is a variable value based on height of page and 2.25rem is an absolute value -> always use one absolute and one relative value -> use vh as variable value -> dont use percentage as variable value, similarly can use max function also 
+  --FS: max(1.75rem, 3vh)
+  in min the absolute value we provided will be the largest it will ever get whatever the vh height similarly in max absolute value is the smallest it will ever get so it is opposite to their names. so both have their uses but we want advantage of both so use clamp function */
+  --FS: clamp(1.75rem, 3vh, 2.25rem);
+  /* max function value which limits minimum, relative value, min function value */
+
+  --FS-SM: clamp(1.25rem, 2vh, 1.5rem);
+
+  --FS-XL: 3rem;
+
+  /* COLOR */
+  --BGCOLOR: #475569;
+  --ALT-BGCOLOR: #1E293B;
+  --RADIAL-COLOR: whitesmoke;
+  --LIGHT-COLOR: whitesmoke;
+  --DARK-COLOR: #000;
+
+  /* SQUARE */
+  --SQUARE-BGCOLOR: papayawhip;
+  --SQUARE-SIZE: max(150px, 20vw);
+
+  /* GENERAL */
+  --PADDING: 0.5em;
+  --SHADOWS: 0 6px 5px -5px var(--DARK-COLOR);
+  --BORDERS: 2px solid var(--DARK-COLOR);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --BGCOLOR: #000;
+    --ALT-BGCOLOR: #333;
+
+    /* rgb is a function, hsl, hwb, can see these options in color pallete they are also functions */
+    --RADIAL-COLOR: rgb(217, 217, 217);
+    --SQUARE-BGCOLOR: rgb(202, 174, 202);
+  }
+}
+
+/* || GENERAL STYLES */
+body {
+  font: var(--FS) var(--FF);
+  min-height: 100vh;
+
+  background-color: var(--BGCOLOR);
+
+  /* radial gradient is also a function, var is a referene function, function used to load images from a link - url() is also a ref function */
+  background-image: radial-gradient(var(--RADIAL-COLOR), var(--BGCOLOR));
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+nav,
+footer {
+  display: grid;
+  place-content: center;
+  grid-template-columns: 100%;
+  text-align: center;
+  z-index: 1;
+}
+
+header,
+footer {
+  position: sticky;
+  background-color: var(--ALT-BGCOLOR);
+  color: var(--LIGHT-COLOR);
+}
+
+header {
+  top: 0;
+}
+
+nav {
+  background-color: var(--LIGHT-COLOR);
+  color: 
+  /* considering 0th index of pair first, and then 1th index); */
+  var(--DARK-COLOR);
+  border-bottom: var(--BORDERS);
+  box-shadow: var(--SHADOWS);
+}
+
+main {
+  flex-grow: 1;
+  
+  /* display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start; */
+  
+  /* comment both the section of myheading and aside and uncomment the div elements. changed for div elements */
+
+  padding: var(--PADDING);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(100px, 300px));
+  /* will get 4 columns and then used minmax function to get 100px of smallest grid item(divs with laptop symbols) and 300px for largest  */
+  gap: min(2vw, 20px);
+}
+
+/* come here after clamp */
+main section {
+  flex-grow: 1;
+  padding: var(--PADDING);
+}
+main aside {
+  background-color: hsla(0, 0%, 20%, 0.8);
+  color: var(--LIGHT-COLOR);
+  font-size: var(--FS-SM);
+  font-style: italic;
+  padding: var(--PADDING);
+}
+.content {
+  /* margin between myheading and content */
+  margin-top: 20px;
+}
+/* now added a media query at last to stack them all if screen size gets too small */
+
+/* implementing custom attribute */
+.tooltip {
+  border-bottom: 1px dashed orange;
+  position: relative;
+  /* will use position absolute when tooltip shows up */
+}
+.tooltip:hover::before {
+  /* hover pseudo class and before pseudo element */
+  content: attr(data-tooltip);
+  /* function attribute used and passed our atribute -> it displays the content "this is latin" in front of the word Lorem */
+
+  position: absolute;
+  top: -20px;
+  white-space: nowrap;
+  background-color: var(--DARK-COLOR);
+  padding: var(--PADDING);
+  border-radius: 15px;
+  /* now it displays 20px above the word lorem */
+}
+
+
+footer {
+  bottom: 0;
+}
+
+a:any-link {
+  color: firebrick;
+}
+
+a:hover, a:focus {
+  filter: brightness(150%);
+  /* better than opacity */
+
+  filter: hue-rotate(180deg);
+  /* can also use this to get a complimentary color */
+}
+
+/* || FEATURES */
+
+.square--highlight {
+  --SQUARE-BGCOLOR: cornflowerblue;
+}
+
+.square {
+  /* commented this width and height to let it adjust to the width and height given in main function for the divs. will notice that the gap between the divs will start growing as the divs are at their max length 300px to take full space of the webpage and will shrink down to 100px if webpage is made smaller -> used minmax, repeat and then min again in the gap */
+  background-color: var(--SQUARE-BGCOLOR);
+  /* width: var(--SQUARE-SIZE);
+  height: var(--SQUARE-SIZE); */
+  border: var(--BORDERS);
+  border-radius: 15px;
+  display: grid;
+  place-content: center;
+  font-size: var(--FS-XL);
+  box-shadow: var(--SHADOWS);
+}
+
+/* if the width of window goes above 576px then the aside section will come in the same row as my heading section and as it is space between, appears as its fitted to rightmost side of the page as a sidebar */
+@media screen and (min-width: 576px) {
+  main {
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  main section {
+    width: calc(70% - 5px);
+  }
+
+  main aside {
+    width: calc(30% - 5px);
+  }
+}

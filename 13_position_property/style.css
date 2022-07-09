@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Lobster&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  min-height: 200vh;
+}
+
+.outer-container {
+  border: 3px dashed #000;
+  width: 75vw;
+  height: 85vh;
+  margin: 40px auto;
+  position: relative;
+}
+
+.inner-container {
+  border: 2px solid #00f;
+  width: 40vw;
+  height: 50vh;
+  margin: 200px auto;
+}
+
+.box {
+  width: 150px;
+  height: 150px;
+  color: #fff;
+  padding: 1rem;
+}
+
+.absolute {
+  background-color: #00f;
+  position: static;
+  /* default value will not change anything */
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* absolute value means parent which is positioned relative and if it does not have any parent then will take the browser window. here in outline window if set position as relative then will take zero as its boundary, now if also set relative in inner box then will take inner box as parent (nearest parent) */
+
+  /* refer fixed class */
+  z-index: 1;
+}
+
+.relative {
+  background-color: red;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.fixed {
+  /* will position from browser window and will stay fixed if even if scrolled, can also remove relative on outer container then also will work same */
+  background-color: green;
+  position: fixed;
+  top: 100px;
+  /* fixed block is on the top of all elements from front view, if in html moved div of fixed above the div of absolute, then absolute will be on top of fixed. not convenient to do in html for this zindex prop in css in absolute class */
+}
+
+.sticky {
+  /* sticky -> initially will stay where it is(will not move due to the position like absolute and relative). at the defined position (here top 0 - 0 from viewport), when we scroll the page, if reaches that defined pos then will stick there (while scrolling) and will stop to stick or go above in scrolling when in the container that it is defined, reaches the end and scrolls up */
+  background-color: #000;
+  position: sticky;
+  top: 0;
+}
+
+/* if want to disappear something of that page then we have two options display-none and opacity 0. display removes it from the page and opacity is not the best way to do it. hence position the element as absolute and place a random value in any of top, right, down, left like -10000px and it will still be there in the page but not visible */
+
+/* comment the first part of html and uncomment the second part -> to see the position properties in action */
+
+html {
+  /* smooth scrolling to refer links in footer which are referring to headings on same page */
+  scroll-behavior: smooth;
+}
+
+section {
+  height: 100vh;
+  /* giving each section height of a viewport */
+}
+
+.blue {background-color: #00f;}
+.red {background-color: #f00;}
+.green {background-color: #0f0;}
+
+header, footer {
+  color: #fff;
+  text-align: center;
+  height: 100px;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  font-size: 5rem;
+}
+
+footer {
+  background-color: #000;
+  font-size: 3rem;
+
+  /* position: fixed;
+  bottom: 0;
+  width: 100%; */
+
+  position: sticky;
+  bottom: 0;
+
+  /* both works same */
+}
+
+a:visited {
+  color: #fff;
+}
+
+.social {
+  background-color: royalblue;
+  color: #fff;
+
+  /* since it is a button will not inherit all properties from para etc */
+  font-size: inherit;
+
+  padding: 1rem;
+
+  position: fixed;
+  top: 30%;
+  left: 0;
+
+  /* stays below header, but want it to always stay on top */
+  z-index: 1;
+}
+
+/* click on the footer links to do to all three headings in the same page, html on top enables smooth scrolling to reach there like animation */

@@ -1,0 +1,58 @@
+/* css reset */
+/* go to inspect elements and see the color box where content, margin, padding, border sizes are displayed. notice the margin is whaat the browser applies itself to the file and this creates calculation problems for em. hence css reset is prefered. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+.container {
+    border: 2px dashed red;
+    font-size: 1.5rem;
+    /* margin: 1em; */
+    padding: 1em;
+    /* for margin and padding can do 1.5rem or 1em both same */
+
+    /* margin-top: 1.5em;
+    margin-right: 2em;
+    margin-bottom: 2em;
+    margin-left: 2em; */
+
+    /* shortcut for above */
+    margin: 1.5em 2em 2em 2em;
+    /* top - right - bottom - left */
+    margin: 1em 1em 2em; 
+    /* top - right and left - bottom */
+    margin: 1.5em 2em;
+    /* top and bottom - left and right */
+
+    /* same format applies for padding also */
+
+    /* similarly */
+    border-top: 1px dashed red;
+    border-right: 1px ridge green;
+
+    /* can apply the properties individually */
+    border-top-width: 5px;
+    border-top-style: dotted;
+    /* also outset, double are different other border styles */
+    border-top-color: blue;
+
+    /* border takes up extra space in the element */
+    outline: 3px solid purple;
+    /* outline does not take up space and exists on the ouline of the element, but can also push it further out and take size by offset, and neg value of offset will bring the outline inside further */
+    outline-offset: 5px;
+}
+
+/* how to make circle in css -> put half the value of width and height as radius*/
+.circle {
+    height: 100px;
+    width: 100px;
+    background-color: yellowgreen;
+    border-radius: 50px;
+
+    margin: 3rem auto;
+    border: 5px dashed chocolate;
+    outline: 5px solid purple;
+    outline-offset: 5px;
+}

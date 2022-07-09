@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  min-height: 400px;
+  margin-inline: auto;
+  border: 1px solid #000;
+
+  /* as soon as apply flex, all boxes set vertically adjust inline */
+  display: flex;
+
+  /* justify-content: flex-start;
+  justify-content: flex-end;
+  justify-content: center; */
+  justify-content: space-evenly;
+  /* justified to center, also values of space around and space between, in around we also have a little space before first box and after last box. in between there is no space around and all boxes are evenly spaced, also space-evenly value where there is equal gap around the boxes and between the boxes */
+
+  /* gap: 1rem; */
+  /* get a gap of 1 rem between each div box */
+
+  /* align all boxes to center, vertically, no values exist here like space around, etc. existant values are flex-start, end */
+  align-items: center;
+
+  /* flexed forizontally
+  if want to bring them in a signle vertical column, can set to row which will align all boxes in a single line, and it will be in the centre from both top and left here */
+  /* flex-direction: column; */
+  /* flex-direction: row; */
+
+  /* reverse the order of boxes */
+  flex-direction: row-reverse;
+
+  /* after inspect elements notice that the boxes do not adjust to the window size */
+  flex-wrap: wrap;
+
+  /* shorthand for flexdirection and flexwrap */
+  flex-flow: row wrap;
+
+  /* to align rows -> will take content like justify content but will align rows*/
+  /* align-content: flex-start; -> on top of the container */
+  /* align-content: flex-end; -> bottom */
+  /* align-content: center; */
+  /* align-content: space-between; -> max space in between the rows */
+  align-content: space-evenly;
+  /* this works when have multiple rows to align -> resize the window for wrapping the items and making all boxes to adjust multi line */
+} 
+
+.box {
+  min-width: 100px;
+  height: 100px;
+  background-color: #000;
+  color: #fff;
+  font-size: 2rem;
+  padding: 0.5rem;
+
+  /* can also apply flex on the elements of the container and not only on the container */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* all numbers will now be in the center of the boxes, this commands can be used to center any element inside container or all elements in a body as a container */
+
+  /* flex items are also flex containers -> here the text 1, 2, 3 in the boxes become flex items and boxes become containers */
+  /* if flex basis, flex-grow and flex-shrink is defined then due to flex basis, flex grow will allow the item to grow above the basis length ans flexshrink will allow item to shrink below the basis */
+}
+
+.box:nth-child(2) {
+  order: 1;
+  /* here it has the highest number while all others have order no as 0 hence it will go to last. if similarly given order to all the items and then the order number becomes the item no. order no can also be neg */
+}
