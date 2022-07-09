@@ -1,6 +1,6 @@
 # "CSS for Beginners"
 
-### Full Course - ?? Chapters
+### Full Course Chapters
 
 ---
 
